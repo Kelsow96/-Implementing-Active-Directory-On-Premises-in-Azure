@@ -74,3 +74,37 @@ In this tutorial, we'll set up our Domain Controller VM (DC-1) and a Client VM (
   - Automate User Creation:
     - On "DC-1", use PowerShell to run a script that creates multiple users.
     - Test logging into "Client-1" with one of the new accounts.
+
+<h2> Steps: </h2> 
+
+1. Create our VMs
+  - Create Domain Controller VM:
+    - Deploy a Windows Server 2022 VM named "DC-1". We'll use "labuser" as our Username and "Password1234" as our password. We can move straight to "Review + Create". It should pass validation, and we can create our DC-1 VM.
+
+<img src="https://github.com/Kelsow96/Deploying-Active-Directory-And-Creating-Users/assets/169297569/30f052a1-dac2-481b-95ab-940e337b87ec" width="600" /> 
+<img src="https://github.com/Kelsow96/Deploying-Active-Directory-And-Creating-Users/assets/169297569/bcc45935-53d9-4f00-a8c9-9f98a413e981" width="600" />
+<img src="https://github.com/Kelsow96/Deploying-Active-Directory-And-Creating-Users/assets/169297569/248024d9-5b1f-4760-8087-f7b2ab9725cd" width="600" />
+<br>
+<br/>
+
+  - Set the NIC Private IP address to static. Within DC-1 we'll navigate to "Network Settings", "Network interface: dc-1755_z1", "IP configurations", "ipconfig", finally select "Static" and "Save".
+
+<img src="https://github.com/Kelsow96/Deploying-Active-Directory-And-Creating-Users/assets/169297569/d555ae44-1f52-41bd-99b5-c5ab2444162c" width="600" />
+<img src="https://github.com/Kelsow96/Deploying-Active-Directory-And-Creating-Users/assets/169297569/44679a7f-792f-4997-ae0d-256a014a65a0" width="600" />
+<img src="https://github.com/Kelsow96/Deploying-Active-Directory-And-Creating-Users/assets/169297569/d7a36717-6276-4a59-999f-f781da369ff2" width="600" />
+<img src="https://github.com/Kelsow96/Deploying-Active-Directory-And-Creating-Users/assets/169297569/0b65d1bf-9800-48fb-a6a7-647a3b7f2d77" width="600" />
+<br>
+<br/>
+<img src="https://github.com/Kelsow96/Deploying-Active-Directory-And-Creating-Users/assets/169297569/6398d1bc-21e7-4015-bb26-ab87b13d74da" width="400" />
+<br>
+<br/>
+
+  - Create Client VM:
+    - Deploy a Windows 10 VM named "Client-1". We'll do the same exact steps we used to create DC-1 for Client-1. Expect we'll use Windows 10 for the operating system and DC-1's Vnet.
+<img src="https://github.com/Kelsow96/Deploying-Active-Directory-And-Creating-Users/assets/169297569/1e27fc8f-6863-45c1-992e-e1afe8e27cdb" width="600" />
+<img src="https://github.com/Kelsow96/Deploying-Active-Directory-And-Creating-Users/assets/169297569/c7ce825b-8050-4ada-90bd-4aef5c7f10ce" width="600" />
+<img src="https://github.com/Kelsow96/Deploying-Active-Directory-And-Creating-Users/assets/169297569/0b735dca-0f35-4902-9460-60f88011d3c8" width="600" />
+<br>
+<br/>
+   
+    - Verify both VMs are in the same VNet using Network Watcher.  
