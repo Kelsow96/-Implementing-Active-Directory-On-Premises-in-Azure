@@ -37,7 +37,7 @@ In this tutorial, we'll set up our Domain Controller VM (DC-1) and a Client VM (
   - Create Client VM:
     - Deploy a Windows 10 VM named "Client-1".
     - Use the same Resource Group and VNet as "DC-1".
-    - Verify both VMs are in the same VNet using Network Watcher.
+    - Verify both VMs are in the same VNet.
   
 2. Ensure Connectivity between Client and Domain Controller
   - Test Connectivity:
@@ -107,4 +107,8 @@ In this tutorial, we'll set up our Domain Controller VM (DC-1) and a Client VM (
 <br>
 <br/>
    
-    - Verify both VMs are in the same VNet using Network Watcher.  
+- Verify both VMs are in the same VNet.
+![Capture](https://github.com/Kelsow96/Deploying-Active-Directory-And-Creating-Users/assets/169297569/f95d5819-1fd2-4fcd-a4c8-86acb10482dc)
+![Capture](https://github.com/Kelsow96/Deploying-Active-Directory-And-Creating-Users/assets/169297569/952949e2-59d1-40d6-b753-3345dcfb2bb9)
+
+
