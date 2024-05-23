@@ -183,3 +183,42 @@ In this tutorial, we'll set up our Domain Controller VM (DC-1) and a Client VM (
 <img src="https://github.com/Kelsow96/Deploying-Active-Directory-And-Creating-Users/assets/169297569/bc790900-08be-4601-8796-ca53533631ea" width="400" />
 <br>
 <br/>
+
+4. Create Admin and Normal User Accounts in AD
+  - Create User Accounts:
+    - In ADUC, create Organizational Units (OUs) "_EMPLOYEES" and "_ADMINS".
+      - Within our Server Manager Dashboard we will select "Tools" and then "Active Directory Users and Computers". Right-click "mydomain.com" navigate to "New" and select "Organizational Unit (OU)". We will create a _EMPLOYEES OU and a _ADMINS OU.
+![Capture](https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/3511a302-7362-43be-95f7-37851f4ed4af)
+![Capture](https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/79b28d27-6512-4af0-a79f-10782a3a184a)
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/1bd8bdb1-7332-499e-ac25-58eae173da3b" width="300" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/fcb4ff0a-5cbc-4913-b401-e4e913355668" width="300" />
+<br>
+<br/>
+
+- Create a new user "jane_admin" and add to the "Domain Admins" group.
+  -Right-click "_Admins", navigate to "New" and select "User". Within the new window, we'll create a new user name jane doe make their "User logon name" "jane_admin". Once all of the required fields are filled out we'll select "Next". In the next window, we'll set the password. The password will be "Password1234". We'll also deselect "User must change password at next logon" and select "Password never expires". Once all required fields are filled out, we'll select "Next" and "Finish" on the following page. Now right-click "jane doe" user account and select "Properties". In the new window, select "Member of" and then select "Add" on that page. Within the "Select Groups" window we'll type "Domain Admins" in the "Object Names" text window. You can select "Check Names" to see if the group you want to add to exists within the system. Select "OK" and then "Apply" to finalize adding "jane doe" user account to the "Domain Admins" group.
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/cc06ae9d-df38-4623-84f4-826f29c15b4f" width="400" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/de08889e-61f3-431e-8c60-d909e3090592" width="400" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/5204780c-d827-4a83-9b6f-7c75a267eddf" width="400" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/90bb4cbc-ce6b-4d93-bd0f-ea16f11ebbfc" width="400" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/f2f6d4b8-4c9e-41bb-8d97-91deb4c29c7e" width="400" />
+<img src="(https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/7073fadf-40f3-4c45-a7ec-d9f091feada0" width="500" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/023299de-7ad3-4e6f-9e22-b773911f43c6" width="400" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/9e582403-08c6-4b17-8668-6f27f37e35ee" width="400" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/444d6f7c-4b48-4813-952d-856d7cca7c1e" width="400" />
+<br>
+<br/>
+
+- Log in as mydomain.com\jane_admin.
+  - We'll log out of connection with DC-1 by typing "logoff" in Powershell. Once we're logged out, we'll RDP back into DC-1 using our new admin user account "jane_admin"
+![image](https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/9f0855dc-cab6-4fa3-8172-0285709ab9ee)
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/03d3f61b-b5e4-4284-baed-50f464e0e0bc" width="400" />
+<br>
+<br/>
+
+5. Join Client-1 to the Domain
+  - Configure DNS and Join Domain:
+    - Set "Client-1" DNS to "DC-1"’s Private IP in Azure Portal.
+    - Restart "Client-1".
+    - Join "Client-1" to the domain and restart.
+    - Verify "Client-1" in ADUC.
