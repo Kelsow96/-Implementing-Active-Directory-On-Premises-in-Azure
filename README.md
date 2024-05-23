@@ -1,4 +1,4 @@
-<h1> Deploying Active Directory and Creating Users </h1> 
+<h1> Implementing Active Directory (On-Premises) in Azure </h1> 
 
 <img src="https://github.com/Kelsow96/Deploying-Active-Directory-And-Creating-Users/assets/169297569/5b730490-62e5-4e6a-99ed-903590512f80" width="600" />
 
