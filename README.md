@@ -196,7 +196,7 @@ In this tutorial, we'll set up our Domain Controller VM (DC-1) and a Client VM (
 <br/>
 
 - Create a new user "jane_admin" and add to the "Domain Admins" group.
-  -Right-click "_Admins", navigate to "New" and select "User". Within the new window, we'll create a new user name jane doe make their "User logon name" "jane_admin". Once all of the required fields are filled out we'll select "Next". In the next window, we'll set the password. The password will be "Password1234". We'll also deselect "User must change password at next logon" and select "Password never expires". Once all required fields are filled out, we'll select "Next" and "Finish" on the following page. Now right-click "jane doe" user account and select "Properties". In the new window, select "Member of" and then select "Add" on that page. Within the "Select Groups" window we'll type "Domain Admins" in the "Object Names" text window. You can select "Check Names" to see if the group you want to add to exists within the system. Select "OK" and then "Apply" to finalize adding "jane doe" user account to the "Domain Admins" group.
+  -Right-click "_Admins", navigate to "New" and select "User". Within the new window, we'll create a new user name jane doe make their "User logon name" "jane_admin". Once all of the required fields are filled out we'll select "Next". In the next window, we'll set the password. The password will be "Password1234". We'll also deselect "User must change password at next logon" and select "Password never expires". Once all required fields are filled out, we'll select "Next" and "Finish" on the following page. Now right-click "jane doe" user account and select "Properties". In the new window, select "Member of" and then select "Add" on that page. Within the "Select Groups" window we'll type "Domain Admins" in the "Object Names" text window. You can select "Check Names" to see if the group you want to add exists within the system. Select "OK" and then "Apply" to finalize adding "jane doe" user account to the "Domain Admins" group.
 <img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/cc06ae9d-df38-4623-84f4-826f29c15b4f" width="400" />
 <img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/de08889e-61f3-431e-8c60-d909e3090592" width="400" />
 <img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/5204780c-d827-4a83-9b6f-7c75a267eddf" width="400" />
@@ -219,6 +219,43 @@ In this tutorial, we'll set up our Domain Controller VM (DC-1) and a Client VM (
 5. Join Client-1 to the Domain
   - Configure DNS and Join Domain:
     - Set "Client-1" DNS to "DC-1"’s Private IP in Azure Portal.
-    - Restart "Client-1".
-    - Join "Client-1" to the domain and restart.
-    - Verify "Client-1" in ADUC.
+      - First, we must retrieve DC-1's Private address from the Azure Portal. Once we have the Private IP address for DC-1, we'll navigate to Client-1's "Networking" Settings within Azure. Within the "Networking Settings" Page we'll navigate to "Network Interface" and select "client-1652_z1". We'll now navigate to "DNS servers". Within the "DNS servers" page we'll select "Custom" type the Private IP address of DC-1 within the text box and select "Save" once finished. 
+![Capture](https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/667b8d14-4268-4790-b7b7-06dbe1f9132a)
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/30ca5317-7e2d-429b-8db9-da13d5bb88d1" width="600" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/a32e6a5f-4438-4b29-a238-5e928897e10e" width="600" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/d493a961-5e93-4b48-9211-de733b368a00" width="600" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/5c60a251-589d-4777-8fe0-c6c63e45581c" width="600" />
+<br>
+<br/>
+
+- Restart "Client-1".
+  - Navigate back to the "Overview" page for CLient-1 within Azure and select "Restart"
+![Capture](https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/0cd3be45-d471-4b20-85d5-1f63b98e2388)
+<br>
+<br/>
+
+- Join "Client-1" to the domain and restart.
+  - Log back into Client-1 via RDP. Once logged in, we'll confirm that we successfully added CLient-1 to the DNS Server using the command "ipconfing /all" within Powershell. We should see the Private IP address of DC-1 used for the DNS Server. Right-click the Windows symbol at the bottom left, and select "System". Select "Rename this PC (advanced). Once within the System Properties page, select "Change" from there a new window will appear, select "Domain" from the "Member of" section and type in "mydomain.com" in the text box and finally select "OK. We'll then be prompted with the Windows Security page and asked to put in a Username and Password with the correct permissions to add Client-1 to the Domain. We'll use the admin account we created in DC-1 called "jane_admin". The username will be "mydomain.com\jane_admin" and password "Password1234". Select "OK". If everything was a success we should see a Welcome to Domain window. We'll now be prompted to restart Client-1 for the changes to occur.
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/64ecc4bf-e880-45d1-b4b4-2fdb13cffab0" width="500" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/2512e2ec-c178-41db-8767-c596a42a9576" width="300" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/3629b73c-1b72-4857-9aa6-874ed722d5b5" width="700" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/9273b8db-c85e-4f85-a404-64b0379a1c74" width="600" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/cc2ef4f1-2440-487b-8326-617195a9d40f" width="300" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/c0f90378-df71-43b7-89bc-40d805e42e1b" width="300" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/170075e5-9995-4f22-9564-baa1815612a0" width="300" />
+<br>
+<br/>
+
+- Verify "Client-1" in ADUC.
+  - First, we'll log back into Client-1 but this time instead of just using "labuser" for our login we can now use "jane_admin" for our login. This is because Client-1 has now joined our domain, and we gave "jane_admin" the ability to log into any computer connected to the domain. The username will be "mydomain.com\jane_admin" and the password "Password1234". We'll go back to DC-1, within Server Manager navigate to "Tools" and then select "Active Directory User and Computers". Within the ADUC window select "Computers" from "mydomain.com" drop-down menu. We should see Client-1. Within "Users" page we should see "labuser" as well.
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/f9681bdb-3871-487a-99e3-280044c1eb6d" width="400" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/44b7e531-157e-4d84-b8a4-378575bc369a" width="600" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/dd95b459-fd10-408d-a9b2-e99887875607" width="500" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/c7dde01a-6aa1-4af2-a1a5-e01c66eed866" width="600" />
+<br>
+<br/>
+
+6. Setup Remote Desktop for Non-Admin Users on Client-1
+  - Configure Remote Desktop:
+    - Log into "Client-1" as mydomain.com\jane_admin.
+    - Allow "domain users" access to Remote Desktop.
