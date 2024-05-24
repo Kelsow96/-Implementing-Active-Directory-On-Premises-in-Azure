@@ -196,7 +196,7 @@ In this tutorial, we'll set up our Domain Controller VM (DC-1) and a Client VM (
 <br/>
 
 - Create a new user "jane_admin" and add to the "Domain Admins" group.
-  -Right-click "_Admins", navigate to "New" and select "User". Within the new window, we'll create a new user name jane doe make their "User logon name" "jane_admin". Once all of the required fields are filled out we'll select "Next". In the next window, we'll set the password. The password will be "Password1234". We'll also deselect "User must change password at next logon" and select "Password never expires". Once all required fields are filled out, we'll select "Next" and "Finish" on the following page. Now right-click "jane doe" user account and select "Properties". In the new window, select "Member of" and then select "Add" on that page. Within the "Select Groups" window we'll type "Domain Admins" in the "Object Names" text window. You can select "Check Names" to see if the group you want to add exists within the system. Select "OK" and then "Apply" to finalize adding "jane doe" user account to the "Domain Admins" group.
+  -Right-click "_Admins", navigate to "New" and select "User". Within the new window, we'll create a new user name jane doe make their "User logon name" "jane_admin". Once all of the required fields are filled out we'll select "Next". In the next window, we'll set the password. The password will be "Password1234". We'll also deselect "User must change password at next logon" and select "Password never expires". Once all required fields are filled out, we'll select "Next" and "Finish" on the following page. Now right-click "jane doe" user account and select "Properties". In the new window, select "Member of" and then select "Add" on that page. Within the "Select Groups" window we'll type "Domain Admins" in the "Object Names" text window. Select "Check Names" to see if the group you want to add exists within the system. Select "OK" and then "Apply" to finalize adding "jane doe" user account to the "Domain Admins" group.
 <img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/cc06ae9d-df38-4623-84f4-826f29c15b4f" width="400" />
 <img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/de08889e-61f3-431e-8c60-d909e3090592" width="400" />
 <img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/5204780c-d827-4a83-9b6f-7c75a267eddf" width="400" />
@@ -258,4 +258,27 @@ In this tutorial, we'll set up our Domain Controller VM (DC-1) and a Client VM (
 6. Setup Remote Desktop for Non-Admin Users on Client-1
   - Configure Remote Desktop:
     - Log into "Client-1" as mydomain.com\jane_admin.
-    - Allow "domain users" access to Remote Desktop.
+      - After our last step, you should already be logged into Client-1. If not, log in with "mydomain. comjane_admin."
+
+- Allow "domain users" access to Remote Desktop.
+    - Once logged in we'll navigate back to system properties by right-clicking the Windows symbol at the bottom right and selecting "system". This time we'll select "Remote Desktop". We'll select "Select users that can remotely access this PC" on the Remote Desktop page. Now we'll select "Add". We'll type "Domain Users" in the text box in the Select Users or Groups window. Select "Check Names" to see if the group you want to add exists within the system. Select "OK". Select "OK" again. Any domain user should now be able to RDP into Client-1
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/f606fa00-62ae-44b3-b3db-0d3ea2d40e81" width="600" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/a674fc95-e334-469c-9cd6-31981fdcee09" width="400" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/315ea295-68b7-41a7-b192-f2ef67bc9c47" width="300" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/295a9c83-5d97-4545-bbed-cc647b3f645a" width="400" />
+<br>
+<br/>
+
+7. Create Additional Users and Test Logins
+  - Automate User Creation:
+    - On "DC-1", use PowerShell to run a script that creates multiple users.
+      - Within the search bar at the bottom of DC-1, we'll type "powershell ise", right-click the application and select "Run as administrator". Select "Yes" when prompted. We'll navigate to this GitHub account, [Generate Names Create Users (JoshMadakor)](https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1), and copy all the code within the file. Within DC-1 Powershell ISE window we'll select "New Script". Paste all of the code within the new file and select run. Script should now run and create 10,000 random usernames all with the password "Password1"
+    
+![Capture](https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/317a8f9e-1fd9-46f5-9b0d-ba3f89c13672)
+![image](https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/53808c0c-6ae7-4d78-ba53-b0e6e5c95145)
+![Capture](https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/6dbe7b60-df82-4081-89ba-7c875403a468)
+![Capture](https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/0ad3b1f4-4424-4525-bfbd-af9aa91c34cd)
+![Capture](https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/0296bb90-1ac8-4ee1-80b4-9be9ac7434c8)
+
+
+- Test logging into "Client-1" with one of the new accounts.
