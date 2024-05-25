@@ -292,4 +292,5 @@ In this tutorial, we'll set up our Domain Controller VM (DC-1) and a Client VM (
 <br/>
 
 <h2> Summary </h2>
+
 - In this tutorial, we demonstrated the process of setting up a Domain Controller VM (DC-1) and a Client VM (Client-1) within Microsoft Azure. Following the detailed steps, we ensured connectivity between Client-1 and DC-1, installed Active Directory on DC-1, created administrative and standard user accounts in Active Directory (AD), and joined Client-1 to our domain. Additionally, we set up remote desktop access for non-administrative users on Client-1 and tested logins with newly created user accounts. This comprehensive guide utilized various environments and technologies, including Remote Desktop, Windows Firewall, Active Directory Domain Services (AD DS), Active Directory Users and Computers (ADUC), and PowerShell, on Windows 10 and Windows Server 2022 operating systems. The tutorial emphasized the importance of correct configuration and verification at each step to ensure successful domain setup and user management.
