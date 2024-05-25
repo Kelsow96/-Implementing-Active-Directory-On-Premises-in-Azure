@@ -8,7 +8,7 @@ Active Directory (AD) is a Microsoft service for managing users, computers, and 
 <br/>
 
 
-In this tutorial, we'll set up our Domain Controller VM (DC-1) and a Client VM (C-1), ensure connectivity between C-1 and DC-1 install Active Directory on DC-1, create Admin and normal user accounts in AD, join C-1 to our domain, setup remote desktop for non-administrative users on C-1, create additional users on DC-1, and attempt to log into C-1 with one of those user accounts.
+In this tutorial, we'll set up our Domain Controller VM (DC-1) and a Client VM (Client-1), ensure connectivity between Client-1 and DC-1 install Active Directory on DC-1, create Admin and normal user accounts in AD, join Client-1 to our domain, setup remote desktop for non-administrative users on Client-1, create additional users on DC-1, and attempt to log into Client-1 with one of those user accounts.
 
 <h2> Environments and Technologies Used: </h2>
 
@@ -272,13 +272,23 @@ In this tutorial, we'll set up our Domain Controller VM (DC-1) and a Client VM (
 7. Create Additional Users and Test Logins
   - Automate User Creation:
     - On "DC-1", use PowerShell to run a script that creates multiple users.
-      - Within the search bar at the bottom of DC-1, we'll type "powershell ise", right-click the application and select "Run as administrator". Select "Yes" when prompted. We'll navigate to this GitHub account, [Generate Names Create Users (JoshMadakor)](https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1), and copy all the code within the file. Within DC-1 Powershell ISE window we'll select "New Script". Paste all of the code within the new file and select run. Script should now run and create 10,000 random usernames all with the password "Password1"
-    
-![Capture](https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/317a8f9e-1fd9-46f5-9b0d-ba3f89c13672)
-![image](https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/53808c0c-6ae7-4d78-ba53-b0e6e5c95145)
-![Capture](https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/6dbe7b60-df82-4081-89ba-7c875403a468)
-![Capture](https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/0ad3b1f4-4424-4525-bfbd-af9aa91c34cd)
-![Capture](https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/0296bb90-1ac8-4ee1-80b4-9be9ac7434c8)
-
+      - Within the search bar at the bottom of DC-1, we'll type "powershell ise", right-click the application and select "Run as administrator". Select "Yes" when prompted. We'll navigate to this GitHub account, [Generate Names Create Users (JoshMadakor)](https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1), and copy all the code within the file. Within DC-1 Powershell ISE window we'll select "New Script". Paste all of the code within the new file and select run. The script should now run and create 10,000 random usernames with the password "Password1" within the "_EMPLOYEES" OU in ADUC.    
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/317a8f9e-1fd9-46f5-9b0d-ba3f89c13672" width="500" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/53808c0c-6ae7-4d78-ba53-b0e6e5c95145" width="700" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/6dbe7b60-df82-4081-89ba-7c875403a468" width="600" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/0ad3b1f4-4424-4525-bfbd-af9aa91c34cd" width="600" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/0296bb90-1ac8-4ee1-80b4-9be9ac7434c8" width="600" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/157e9aa4-46c6-41d1-82c2-4d3665f4465e" width="600" />
+<br>
+<br/>
 
 - Test logging into "Client-1" with one of the new accounts.
+  - Log out of Client-1. We'll now try to log into Client-1 with one of the random users created via the script we ran. I chose user "sut.vaw" but you could use any of the usernames generated. We should successfully log into Client-1 via the random user created. 
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/320deefc-6b16-4a0c-98dd-60dcbe17879f" width="500" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/2e701956-c88e-405a-87a3-8bce19b85a8f" width="400" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/d329687a-e44a-4a27-b030-0ba8f8124cd7" width="400" />
+<img src="https://github.com/Kelsow96/-Implementing-Active-Directory-On-Premises-in-Azure/assets/169297569/54e8e315-b527-47c0-99e6-23b8ca6a60d7" width="400" />
+<br>
+<br/>
+
+In this tutorial, we demonstrated the process of setting up a Domain Controller VM (DC-1) and a Client VM (Client-1) within Microsoft Azure. Following the detailed steps, we ensured connectivity between Client-1 and DC-1, installed Active Directory on DC-1, created administrative and standard user accounts in Active Directory (AD), and joined Client-1 to our domain. Additionally, we set up remote desktop access for non-administrative users on Client-1 and tested logins with newly created user accounts. This comprehensive guide utilized various environments and technologies, including Remote Desktop, Windows Firewall, Active Directory Domain Services (AD DS), Active Directory Users and Computers (ADUC), and PowerShell, on Windows 10 and Windows Server 2022 operating systems. The tutorial emphasized the importance of correct configuration and verification at each step to ensure successful domain setup and user management.
