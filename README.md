@@ -7,7 +7,7 @@ Active Directory (AD) is a Microsoft service for managing users, computers, and 
 <br>
 <br/>
 
-
+<h2> Overview </h2>
 In this tutorial, we'll set up our Domain Controller VM (DC-1) and a Client VM (Client-1), ensure connectivity between Client-1 and DC-1 install Active Directory on DC-1, create Admin and normal user accounts in AD, join Client-1 to our domain, setup remote desktop for non-administrative users on Client-1, create additional users on DC-1, and attempt to log into Client-1 with one of those user accounts.
 
 <h2> Environments and Technologies Used: </h2>
